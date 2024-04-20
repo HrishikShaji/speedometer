@@ -1,8 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
-import gsap from "gsap";
-
 interface SpeedometerProps {
   speed: number;
   size: number;
