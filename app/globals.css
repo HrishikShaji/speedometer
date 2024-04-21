@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.clip-path {
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+}
+
 .circle {
   position: absolute;
   left: calc(50% - 25px);

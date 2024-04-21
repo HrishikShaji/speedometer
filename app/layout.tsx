@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Inter } from "next/font/google";
 import "./globals.css";
+import { PositionProvider } from "@/contexts/PositionContext";
 
 const inter = Inter({ subsets: ["latin"] });
 const bebas = Bebas_Neue({ subsets: ["latin"], weight: ["400"] });
@@ -17,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={bebas.className}>{children}</body>
+      <PositionProvider>
+        <body className={bebas.className}>{children}</body>
+      </PositionProvider>
     </html>
   );
 }
