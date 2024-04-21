@@ -75,7 +75,7 @@ export const DashboardOne: React.FC<DashboardOneProps> = ({ speed, life }) => {
 				className="w-[300px]  absolute z-20 top-[40%] left-[10%] "
 				ref={meterOneRef}
 			>
-				<GaugeOne />
+				<GaugeOne speed={speed} />
 			</div>
 			<div
 				className="w-[300px] absolute z-20 top-[40%] right-[10%]"
