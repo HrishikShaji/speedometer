@@ -55,12 +55,12 @@ export const MeterSeven: React.FC<MeterSevenProps> = ({ speed }) => {
 			{ id: "one", meterValue: 30, colors: green },
 			{ id: "two", meterValue: 60, colors: green },
 			{ id: "three", meterValue: 90, colors: green },
-			{ id: "four", meterValue: 120, colors: yellow },
-			{ id: "five", meterValue: 150, colors: yellow },
-			{ id: "six", meterValue: 180, colors: yellow },
-			{ id: "seven", meterValue: 210, colors: red },
-			{ id: "eight", meterValue: 240, colors: red },
-			{ id: "nine", meterValue: 260, colors: red },
+			{ id: "four", meterValue: 120, colors: green },
+			{ id: "five", meterValue: 150, colors: green },
+			{ id: "six", meterValue: 180, colors: green },
+			{ id: "seven", meterValue: 210, colors: green },
+			{ id: "eight", meterValue: 240, colors: green },
+			{ id: "nine", meterValue: 260, colors: green },
 		];
 		let ctx = gsap.context(() => {
 			elements.forEach((el) => {

@@ -5,31 +5,32 @@ import { HiPhone } from "react-icons/hi2";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdCamera } from "react-icons/md";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { useEffect, useRef, useState } from "react";
 import { usePosition } from "@/hooks/usePosition";
 import { useSlideInOut } from "@/hooks/useSlideInOut";
+import { NewBattery } from "./NewBattery";
 
 interface DashboardOneProps {
   speed: number;
+  life: number;
 }
 
-export const DashboardOne: React.FC<DashboardOneProps> = ({ speed }) => {
+export const DashboardOne: React.FC<DashboardOneProps> = ({ speed, life }) => {
   const hrRef = useRef<HTMLDivElement>(null);
   const [isLocation, setIsLocation] = useState(false);
 
   const { animation: meterOneAnimation, elementRef: meterOneRef } = usePosition(
     {
-      top: "50%",
-      left: "2%",
+      top: "63%",
+      left: "-5%",
       duration: 0.5,
       scale: 0.5,
     },
   );
   const { animation: meterTwoAnimation, elementRef: meterTwoRef } = usePosition(
     {
-      top: "50%",
-      left: "20%",
+      top: "63%",
+      left: "10%",
       duration: 0.5,
       scale: 0.5,
     },
@@ -37,50 +38,19 @@ export const DashboardOne: React.FC<DashboardOneProps> = ({ speed }) => {
 
   const { animation: speedValueAnimation, elementRef: speedValueRef } =
     usePosition({
-      top: "60%",
-      left: "25%",
+      top: "86%",
+      left: "97px",
       duration: 0.5,
       scale: 0.25,
     });
   const { animation: rpmValueAnimation, elementRef: rpmValueRef } = usePosition(
     {
-      top: "60%",
-      left: "25%",
+      top: "86%",
+      left: "258px",
       duration: 0.5,
       scale: 0.25,
     },
   );
-  useLayoutEffect(() => {
-    function animate() {
-      if (speed >= 0 && speed < 120) {
-        gsap.to([speedValueRef.current, rpmValueRef.current], {
-          color: "green",
-        });
-        gsap.to(hrRef.current, {
-          backgroundColor: "green",
-        });
-      } else if (speed >= 120 && speed < 210) {
-        gsap.to([speedValueRef.current, rpmValueRef.current], {
-          color: "yellow",
-        });
-        gsap.to(hrRef.current, {
-          backgroundColor: "yellow",
-        });
-      } else if (speed >= 210) {
-        gsap.to([speedValueRef.current, rpmValueRef.current], {
-          color: "red",
-        });
-        gsap.to(hrRef.current, {
-          backgroundColor: "red",
-        });
-      }
-    }
-    let ctx = gsap.context(() => {
-      animate();
-    });
-
-    return () => ctx.kill();
-  }, [speed]);
 
   const { slideRef, slideAnimation } = useSlideInOut();
 
@@ -144,8 +114,8 @@ export const DashboardOne: React.FC<DashboardOneProps> = ({ speed }) => {
         <MeterSeven speed={speed} />
       </div>
       <div className="flex text-white  flex-col gap-1 items-center absolute bottom-[15%]">
-        <div className=" w-14  ">
-          <Battery />
+        <div className=" w-14  rotate-90">
+          <Battery life={life} />
         </div>
         <h1>Odometer - 11000 Miles</h1>
         <div className="h-[1px] w-[150px] bg-green-500"></div>
@@ -172,7 +142,7 @@ export const DashboardOne: React.FC<DashboardOneProps> = ({ speed }) => {
       </div>
       <div
         ref={slideRef}
-        className="h-full w-full bg-green-500 translate-y-[100%] top-0 left-0 absolute z-10"
+        className="h-full w-full bg-neutral-700 translate-y-[100%] top-0 left-0 absolute z-10"
       >
         <div className="h-full w-full flex items-center justify-center relative">
           <button

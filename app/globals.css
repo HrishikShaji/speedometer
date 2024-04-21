@@ -35,3 +35,25 @@
 .inner {
   transform: rotate(-72deg);
 }
+
+.battery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.battery-svg {
+  width: 100px;
+}
+
+.battery-body {
+  fill: #f0f0f0;
+  stroke: #333;
+  stroke-width: 2;
+}
+
+.battery-terminal {
+  fill: #333;
+}

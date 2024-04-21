@@ -1,9 +1,36 @@
-export const Battery = () => {
-	return (
-		<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M20,15.67V14h2V10H20V8.33A1.34,1.34,0,0,0,18.67,7H3.34A1.34,1.34,0,0,0,2,8.33v7.33A1.34,1.34,0,0,0,3.33,17H18.67A1.34,1.34,0,0,0,20,15.67Z" />
-			<path d="M20,15.67V14h2V10H20V8.33A1.34,1.34,0,0,0,18.67,7H3.34A1.34,1.34,0,0,0,2,8.33v7.33A1.34,1.34,0,0,0,3.33,17H18.67A1.34,1.34,0,0,0,20,15.67Z" />
-			<path d="M24,0V24H0V0Z" fill="none" />
-		</svg>
-	);
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+
+interface BatteryProps {
+  life: number;
+}
+
+export const Battery: React.FC<BatteryProps> = ({ life }) => {
+  const pathRef = useRef<SVGRectElement>(null);
+
+  useEffect(() => {
+    if (pathRef.current) {
+      gsap.to(pathRef.current, {
+        duration: 0.5,
+        scaleY: life / 100,
+        transformOrigin: "bottom",
+      });
+    }
+  }, [life]);
+
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="7" y="6" width="10" height="15" rx="1.5" fill="white" />
+      <rect
+        x="8"
+        y="7"
+        width="8"
+        height="13"
+        rx="1"
+        fill="green"
+        ref={pathRef}
+      />
+      <rect x="9" y="3" width="6" height="2" rx="1" fill="white" />
+    </svg>
+  );
 };
