@@ -1,13 +1,14 @@
 import { Battery } from "./Battery";
 import { MeterSeven } from "./MeterSeven";
 import { TbHeadphonesFilled } from "react-icons/tb";
-import { HiPhone } from "react-icons/hi2";
 import { FaLocationDot } from "react-icons/fa6";
-import { MdCamera } from "react-icons/md";
+import { MdCamera, MdPhone } from "react-icons/md";
 import { useRef, useState } from "react";
 import { LocationSection } from "./LocationSection";
 import { usePositionContext } from "@/contexts/PositionContext";
 import { MusicSection } from "./MusicSection";
+import { CameraSection } from "./CameraSection";
+import { CallSection } from "./CallSection";
 
 interface DashboardOneProps {
   speed: number;
@@ -18,6 +19,8 @@ export const DashboardOne: React.FC<DashboardOneProps> = ({ speed, life }) => {
   const hrRef = useRef<HTMLDivElement>(null);
   const [isLocation, setIsLocation] = useState(false);
   const [isMusic, setIsMusic] = useState(false);
+  const [isCall, setIsCall] = useState(false);
+  const [isCamera, setIsCamera] = useState(false);
 
   const {
     speedValueRef,
@@ -82,9 +85,12 @@ export const DashboardOne: React.FC<DashboardOneProps> = ({ speed, life }) => {
         <h1>Trip - 10000 Miles</h1>
       </div>
       <div className="flex gap-5 absolute bottom-5">
-        <div className="bg-neutral-900 text-white rounded-full w-8 h-8 flex justify-center items-center">
-          <HiPhone />
-        </div>
+        <button
+          onClick={() => setIsCall((prev) => !prev)}
+          className="bg-neutral-900 text-white rounded-full w-8 h-8 flex justify-center items-center"
+        >
+          <MdPhone />
+        </button>
         <button
           onClick={() => setIsLocation((prev) => !prev)}
           className="bg-neutral-900 text-white rounded-full w-8 h-8 flex justify-center items-center"
@@ -97,12 +103,17 @@ export const DashboardOne: React.FC<DashboardOneProps> = ({ speed, life }) => {
         >
           <TbHeadphonesFilled />
         </button>
-        <div className="bg-neutral-900 text-white rounded-full w-8 h-8 flex justify-center items-center">
+        <button
+          onClick={() => setIsCamera((prev) => !prev)}
+          className="bg-neutral-900 text-white rounded-full w-8 h-8 flex justify-center items-center"
+        >
           <MdCamera />
-        </div>
+        </button>
       </div>
       <LocationSection isLocation={isLocation} setIsLocation={setIsLocation} />
       <MusicSection isMusic={isMusic} setIsMusic={setIsMusic} />
+      <CallSection isCall={isCall} setIsCall={setIsCall} />
+      <CameraSection isCamera={isCamera} setIsCamera={setIsCamera} />
     </div>
   );
 };
