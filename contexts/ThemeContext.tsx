@@ -54,7 +54,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   };
   const lightTheme: ThemeColors = {
     primary: { backgroundColor: "#e5e5e5", textColor: "#171717" },
-    secondary: { backgroundColor: "#e5e5e5", textColor: "#262626" },
+    secondary: { backgroundColor: "#d4d4d4", textColor: "#262626" },
     ternary: { backgroundColor: "#d4d4d4", textColor: "#404040" },
     button: { backgroundColor: "#a3a3a3", textColor: "black" },
   };

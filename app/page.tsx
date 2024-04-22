@@ -6,6 +6,7 @@ export default function Home() {
   const [speed, setSpeed] = useState(0);
   const [life, setLife] = useState(100);
   const [rpm, setRpm] = useState(0);
+
   return (
     <main className=" w-full h-screen flex flex-col gap-3 p-2 justify-center items-center bg-black">
       <DashboardOne rpm={rpm} speed={speed} life={life} />
